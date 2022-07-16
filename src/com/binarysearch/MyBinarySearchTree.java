@@ -53,6 +53,14 @@ package com.binarysearch;
 			System.out.print(node.data + "  ");
 		}
 
+		public int size() {
+			return this.getSizeRecursive(root);
+		}
+		
+		public int getSizeRecursive(MyBinaryNode<T> root) {
+		
+			return (root == null) ? 0 : this.getSizeRecursive(root.left) + 1 + this.getSizeRecursive(root.right); 
+		}
 		
 		public static void main(String[] args) {
 			System.out.println(" Welcome to Binary Search Tree ");
@@ -63,15 +71,23 @@ package com.binarysearch;
 			bst.add(56);
 			bst.add(30);
 			bst.add(70);
+			bst.add(22);		 
+			bst.add(40);         
+			bst.add(11);
+			bst.add(3);
+			bst.add(16);
+			bst.add(60);
+			bst.add(95);
+			bst.add(63);
+			bst.add(65);
+			bst.add(67);
 
-			System.out.print("Pre-Order Traversal:- ");
-			bst.preOrderTraversal(root);              
+			System.out.print("Ordered Binary Tree ");
+			bst.preOrderTraversal(root);       
+			
+			System.out.println("\n\nSize of the Binary-Search-Tree :- " + bst.size());
 
-			System.out.print("\n\nIn-Order Traversal:- ");
-			bst.inOrderTraversal(root);
-
-			System.out.print("\n\nPost-Order Traversal:- ");
-			bst.postOrderTraversal(root);
+			
 
 }
 }
