@@ -62,6 +62,24 @@ package com.binarysearch;
 			return (root == null) ? 0 : this.getSizeRecursive(root.left) + 1 + this.getSizeRecursive(root.right); 
 		}
 		
+		public boolean search(T data) {
+			return this.searchRecursive(root, data);
+		}
+
+		public boolean searchRecursive(MyBinaryNode<T> root, T data) {
+			if (root == null) {
+				return false;
+			} else if (data.compareTo(root.data) == 0) {
+				return true;
+			} else {
+				if (data.compareTo(root.data) < 0) {
+					return searchRecursive(root.left, data);
+				} else {
+					return searchRecursive(root.right, data);
+				}
+			}
+		}
+		
 		public static void main(String[] args) {
 			System.out.println(" Welcome to Binary Search Tree ");
 
@@ -82,10 +100,10 @@ package com.binarysearch;
 			bst.add(65);
 			bst.add(67);
 
-			System.out.print("Ordered Binary Tree ");
+			System.out.println("Ordered Binary Tree ");
 			bst.preOrderTraversal(root);       
 			
-			System.out.println("\n\nSize of the Binary-Search-Tree :- " + bst.size());
+			System.out.println(" Result :-  " + bst.search(63) + " 63 is present");
 
 			
 
